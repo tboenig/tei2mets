@@ -325,9 +325,7 @@ xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods
 </xsl:choose>
 </xsl:template>
 <xsl:template match="TEI:head">
-<xsl:variable name="text_head">
-<xsl:value-of select="text() | TEI:hi"/>
-</xsl:variable>
+<xsl:variable name="text_head"><xsl:value-of select="text() | TEI:hi"/></xsl:variable>
 <xsl:if test="parent::TEI:div/count(child::TEI:head) > 1">
 <xsl:message>Div element contains more then one head, only using the first one!</xsl:message>
 </xsl:if>
@@ -427,14 +425,16 @@ xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods
 </MODS:titleInfo>
 <MODS:part>
 <xsl:attribute name="order">
-<xsl:value-of
-select="TEI:TEI/TEI:teiHeader/TEI:fileDesc/TEI:titleStmt/TEI:title[@type = 'volume']/@n"/>
+<xsl:analyze-string select="TEI:TEI/TEI:teiHeader/TEI:fileDesc/TEI:titleStmt/TEI:title[@type = 'volume']/@n" regex="(.*?),(.*?)" flags="s">
+<xsl:matching-substring>
+<xsl:value-of select="regex-group(1)"/>
+</xsl:matching-substring>
+</xsl:analyze-string>
 </xsl:attribute>
 <MODS:detail>
 <xsl:attribute name="type">volume</xsl:attribute>
 <MODS:number>
-<xsl:value-of select="TEI:TEI/TEI:teiHeader/TEI:fileDesc/TEI:titleStmt/TEI:title[@type = 'volume']"
-/>
+<xsl:value-of select="TEI:TEI/TEI:teiHeader/TEI:fileDesc/TEI:titleStmt/TEI:title[@type = 'volume']"/>
 </MODS:number>
 </MODS:detail>
 </MODS:part>
