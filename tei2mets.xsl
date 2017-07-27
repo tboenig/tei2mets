@@ -425,11 +425,17 @@ xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods
 </MODS:titleInfo>
 <MODS:part>
 <xsl:attribute name="order">
-<xsl:analyze-string select="TEI:TEI/TEI:teiHeader/TEI:fileDesc/TEI:titleStmt/TEI:title[@type = 'volume']/@n" regex="(.*?),(.*?)" flags="s">
+<xsl:choose>
+<xsl:when test="TEI:TEI/TEI:teiHeader/TEI:fileDesc/TEI:titleStmt/TEI:title[@type = 'volume'] [matches (@n, ',')]" >
+<xsl:analyze-string select="TEI:TEI/TEI:teiHeader/TEI:fileDesc/TEI:titleStmt/TEI:title[@type = 'volume']/@n" regex="([0-9]+)[,]*([0-9]*)">
 <xsl:matching-substring>
-<xsl:value-of select="regex-group(1)"/>
+<xsl:value-of select="regex-group(2)"/>
 </xsl:matching-substring>
 </xsl:analyze-string>
+</xsl:when>
+<xsl:otherwise>
+<xsl:value-of select="TEI:TEI/TEI:teiHeader/TEI:fileDesc/TEI:titleStmt/TEI:title[@type = 'volume']/@n"/></xsl:otherwise>
+</xsl:choose>
 </xsl:attribute>
 <MODS:detail>
 <xsl:attribute name="type">volume</xsl:attribute>
