@@ -324,12 +324,15 @@ xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods
 </xsl:otherwise>
 </xsl:choose>
 </xsl:template>
+
+
+
 <xsl:template match="TEI:head">
 <xsl:variable name="text_head"><xsl:value-of select="text() | TEI:hi"/></xsl:variable>
-<xsl:if test="parent::TEI:div/count(child::TEI:head) > 1">
-<xsl:message>Div element contains more then one head, only using the first one!</xsl:message>
-</xsl:if>
-<xsl:if test="not(preceding-sibling::TEI:head)">
+<!--<xsl:if test="parent::TEI:div/count(child::TEI:head) > 1">
+<xsl:message>Div element contains more then one head, only using the first one!</xsl:message>-->
+<!--</xsl:if>-->
+<xsl:if test="parent::TEI:div/count(child::TEI:head) &gt;= 1">
 <xsl:attribute name="ID">
 <xsl:call-template name="createId">
 <xsl:with-param name="prefix">
@@ -357,6 +360,12 @@ xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods
 </xsl:attribute>
 </xsl:if>
 </xsl:template>
+
+
+
+
+
+
 <xsl:template match="text()"/>
 <xsl:template name="metsHeader">
 <METS:dmdSec ID="dmdSec_0001">
