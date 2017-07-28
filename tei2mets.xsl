@@ -329,6 +329,7 @@ xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods
 
 <xsl:template match="TEI:head">
 <xsl:variable name="text_head"><xsl:value-of select="text() | TEI:hi"/></xsl:variable>
+<xsl:variable name="LabelType"><xsl:choose><xsl:when test="parent::TEI:div/@type"><xsl:value-of select="parent::TEI:div/@type"/></xsl:when><xsl:otherwise>Chapter</xsl:otherwise></xsl:choose></xsl:variable>
 <!--<xsl:if test="parent::TEI:div/count(child::TEI:head) > 1">
 <xsl:message>Div element contains more then one head, only using the first one!</xsl:message>-->
 <!--</xsl:if>-->
@@ -351,7 +352,7 @@ xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods
 </xsl:attribute>
 </xsl:if>
 <xsl:attribute name="TYPE">
-<xsl:text>Chapter</xsl:text>
+<xsl:value-of select="$LabelType"/>
 </xsl:attribute>
 <xsl:attribute name="LABEL">
 <xsl:call-template name="cleanLabel">
