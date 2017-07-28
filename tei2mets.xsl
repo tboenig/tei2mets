@@ -295,7 +295,15 @@ xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods
 </xsl:template>
 
 
+<xsl:template match="TEI:back">
+<METS:div>
+<xsl:apply-templates select="TEI:titlePage"/>
+</METS:div>
+</xsl:template>
+
+
 <xsl:template match="TEI:titlePage">
+<xsl:variable name="LabelType"><xsl:choose><xsl:when test=".[@type = 'main']">title_page</xsl:when><xsl:otherwise><xsl:value-of select="@type"/></xsl:otherwise></xsl:choose></xsl:variable>
 <xsl:attribute name="ID">
 <xsl:call-template name="createId">
 <xsl:with-param name="prefix">
@@ -306,7 +314,7 @@ xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods
 </xsl:call-template>
 </xsl:attribute>
 <xsl:attribute name="TYPE">
-<xsl:text>title_page</xsl:text>
+<xsl:value-of select="$LabelType"/>
 </xsl:attribute>
 <xsl:attribute name="LABEL"/>
 </xsl:template>
