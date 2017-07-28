@@ -437,7 +437,7 @@ xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods
 <xsl:attribute name="order">
 <xsl:choose>
 <xsl:when test="TEI:TEI/TEI:teiHeader/TEI:fileDesc/TEI:titleStmt/TEI:title[@type = 'volume'] [matches (@n, ',')]" >
-<xsl:analyze-string select="TEI:TEI/TEI:teiHeader/TEI:fileDesc/TEI:titleStmt/TEI:title[@type = 'volume']/@n" regex="([0-9]+)[,]*([0-9]*)">
+<xsl:analyze-string select="TEI:TEI/TEI:teiHeader/TEI:fileDesc/TEI:titleStmt/TEI:title[@type = 'volume']/@n" regex="(\d+),*(\d*)">
 <xsl:matching-substring>
 <xsl:value-of select="regex-group(2)"/>
 </xsl:matching-substring>
