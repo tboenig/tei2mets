@@ -1,0 +1,8 @@
+
+Getting Java system properties with system-property():
+
+  java.version = "1.8.0_162"
+  path.separator = ";"
+  file.separator = "\"
+  user.name = ""
+  user.country = "DEhttp://www.saxonica.com/"

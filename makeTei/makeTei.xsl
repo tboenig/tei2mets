@@ -19,7 +19,7 @@ exclude-result-prefixes="#all" version="3.0">
 <TEI xmlns="http://www.tei-c.org/ns/1.0">
 <xsl:copy-of select="document($baseURL)//teiHeader"/>
 <body>
-<xsl:for-each select="collection('file:///C:/Users/matthias/Documents/GitHub/tei2mets/gt_sample/jpg/?select=*.jpg')" >
+<xsl:for-each select="collection('file:///C:/Users/matth/Documents/GitHub/tei2mets/gt_sample/tif/?select=*.tif')" >
 <xsl:element name='file'>
 <xsl:value-of select="document-uri(.), '/'[last()]"/>
 </xsl:element>
