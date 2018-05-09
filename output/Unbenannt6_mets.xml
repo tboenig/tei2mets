@@ -95,54 +95,64 @@ Duncker &amp; Humblot
       </METS:digiprovMD>
    </METS:amdSec>
    <METS:fileSec>
+      <METS:fileGrp USE="OCR-D-GT-SEG-PAGE">
+         <METS:file MIMETYPE="image/jpeg" ID="file_OCR-D-GT-SEG-PAGE_0001">
+            <METS:FLocat LOCTYPE="URL"
+                         xlink:href="http://media.dwds.de/dta/images/weber_politik_1919/weber_politik_1919_0001_px.tif"/>
+         </METS:file>
+         <METS:file MIMETYPE="image/jpeg" ID="file_OCR-D-GT-SEG-PAGE_0002">
+            <METS:FLocat LOCTYPE="URL"
+                         xlink:href="http://media.dwds.de/dta/images/weber_politik_1919/weber_politik_1919_0002_px.tif"/>
+         </METS:file>
+      </METS:fileGrp>
       <METS:fileGrp USE="DEFAULT">
          <METS:file MIMETYPE="image/jpeg" ID="file_DEFAULT_0001">
             <METS:FLocat LOCTYPE="URL"
-                         xlink:href="http://media.dwds.de/dta/images/weber_politik_1919/weber_politik_1919_0001_800px.jpg"/>
+                         xlink:href="http://media.dwds.de/dta/images/weber_politik_1919/weber_politik_1919_0001_800px.tif"/>
          </METS:file>
          <METS:file MIMETYPE="image/jpeg" ID="file_DEFAULT_0002">
             <METS:FLocat LOCTYPE="URL"
-                         xlink:href="http://media.dwds.de/dta/images/weber_politik_1919/weber_politik_1919_0002_800px.jpg"/>
+                         xlink:href="http://media.dwds.de/dta/images/weber_politik_1919/weber_politik_1919_0002_800px.tif"/>
          </METS:file>
       </METS:fileGrp>
       <METS:fileGrp USE="MIN">
          <METS:file MIMETYPE="image/jpeg" ID="file_MIN_0001">
             <METS:FLocat LOCTYPE="URL"
-                         xlink:href="http://media.dwds.de/dta/images/weber_politik_1919/weber_politik_1919_0001_400px.jpg"/>
+                         xlink:href="http://media.dwds.de/dta/images/weber_politik_1919/weber_politik_1919_0001_400px.tif"/>
          </METS:file>
          <METS:file MIMETYPE="image/jpeg" ID="file_MIN_0002">
             <METS:FLocat LOCTYPE="URL"
-                         xlink:href="http://media.dwds.de/dta/images/weber_politik_1919/weber_politik_1919_0002_400px.jpg"/>
+                         xlink:href="http://media.dwds.de/dta/images/weber_politik_1919/weber_politik_1919_0002_400px.tif"/>
          </METS:file>
       </METS:fileGrp>
       <METS:fileGrp USE="THUMBS">
          <METS:file MIMETYPE="image/jpeg" ID="file_THUMBS_0001">
             <METS:FLocat LOCTYPE="URL"
-                         xlink:href="http://media.dwds.de/dta/images/weber_politik_1919/weber_politik_1919_0001_160px.jpg"/>
+                         xlink:href="http://media.dwds.de/dta/images/weber_politik_1919/weber_politik_1919_0001_160px.tif"/>
          </METS:file>
          <METS:file MIMETYPE="image/jpeg" ID="file_THUMBS_0002">
             <METS:FLocat LOCTYPE="URL"
-                         xlink:href="http://media.dwds.de/dta/images/weber_politik_1919/weber_politik_1919_0002_160px.jpg"/>
+                         xlink:href="http://media.dwds.de/dta/images/weber_politik_1919/weber_politik_1919_0002_160px.tif"/>
          </METS:file>
       </METS:fileGrp>
       <METS:fileGrp USE="MAX">
          <METS:file MIMETYPE="image/jpeg" ID="file_MAX_0001">
             <METS:FLocat LOCTYPE="URL"
-                         xlink:href="http://media.dwds.de/dta/images/weber_politik_1919/weber_politik_1919_0001_1600px.jpg"/>
+                         xlink:href="http://media.dwds.de/dta/images/weber_politik_1919/weber_politik_1919_0001_1600px.tif"/>
          </METS:file>
          <METS:file MIMETYPE="image/jpeg" ID="file_MAX_0002">
             <METS:FLocat LOCTYPE="URL"
-                         xlink:href="http://media.dwds.de/dta/images/weber_politik_1919/weber_politik_1919_0002_1600px.jpg"/>
+                         xlink:href="http://media.dwds.de/dta/images/weber_politik_1919/weber_politik_1919_0002_1600px.tif"/>
          </METS:file>
       </METS:fileGrp>
       <METS:fileGrp USE="DOWNLOAD">
          <METS:file MIMETYPE="image/jpeg" ID="file_DOWNLOAD_0001">
             <METS:FLocat LOCTYPE="URL"
-                         xlink:href="http://media.dwds.de/dta/images/weber_politik_1919/weber_politik_1919_0001_1600px.jpg"/>
+                         xlink:href="http://media.dwds.de/dta/images/weber_politik_1919/weber_politik_1919_0001_1600px.tif"/>
          </METS:file>
          <METS:file MIMETYPE="image/jpeg" ID="file_DOWNLOAD_0002">
             <METS:FLocat LOCTYPE="URL"
-                         xlink:href="http://media.dwds.de/dta/images/weber_politik_1919/weber_politik_1919_0002_1600px.jpg"/>
+                         xlink:href="http://media.dwds.de/dta/images/weber_politik_1919/weber_politik_1919_0002_1600px.tif"/>
          </METS:file>
       </METS:fileGrp>
    </METS:fileSec>
@@ -155,6 +165,7 @@ Duncker &amp; Humblot
    <METS:structMap TYPE="PHYSICAL">
       <METS:div TYPE="physSequence" ID="phys_0000">
          <METS:div TYPE="page" ORDER="1" ID="phys_0001">
+            <METS:fptr FILEID="file_OCR-D-GT-SEG-PAGE_0001"/>
             <METS:fptr FILEID="file_DEFAULT_0001"/>
             <METS:fptr FILEID="file_MIN_0001"/>
             <METS:fptr FILEID="file_THUMBS_0001"/>
@@ -162,6 +173,7 @@ Duncker &amp; Humblot
             <METS:fptr FILEID="file_DOWNLOAD_0001"/>
          </METS:div>
          <METS:div TYPE="page" ORDER="2" ID="phys_0002">
+            <METS:fptr FILEID="file_OCR-D-GT-SEG-PAGE_0002"/>
             <METS:fptr FILEID="file_DEFAULT_0002"/>
             <METS:fptr FILEID="file_MIN_0002"/>
             <METS:fptr FILEID="file_THUMBS_0002"/>

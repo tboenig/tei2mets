@@ -36,7 +36,7 @@ xmlns:xd="http://www.oxygenxml.com/ns/doc/xsl" exclude-result-prefixes="xs" vers
 <xsl:output encoding="UTF-8" exclude-result-prefixes="#all" indent="yes"/>
 <xsl:param name="identifier"><xsl:choose><xsl:when test="//TEI:fileDesc/TEI:publicationStmt/TEI:idno/TEI:idno[@type = 'DTADirName']"><xsl:value-of select="//TEI:fileDesc/TEI:publicationStmt/TEI:idno/TEI:idno[@type = 'DTADirName']"/></xsl:when><xsl:otherwise>DTADirName_nicht_vorhanden</xsl:otherwise></xsl:choose></xsl:param>
 <xsl:param name="locationPrefix">http://media.dwds.de/dta/images/</xsl:param>
-<xsl:param name="locationSuffix">.jpg</xsl:param>
+<xsl:param name="locationSuffix">.tif</xsl:param>
 <xsl:param name="multipleHead" select="true()" as="xs:boolean"/>
 <xsl:variable name="physPrefix">phys</xsl:variable>
 <xsl:variable name="locPrefix">loc</xsl:variable>
@@ -49,7 +49,21 @@ xmlns:xd="http://www.oxygenxml.com/ns/doc/xsl" exclude-result-prefixes="xs" vers
 <mets:fileGrp USE="OCR-D-GT-SEG-WORD"> 		Word segmentation ground truth
 <mets:fileGrp USE="OCR-D-GT-SEG-GLYPH"> 	Glyph segmentation ground truth
  -->
+<xsl:param name="PAGE"/>
+<xsl:param name="BLOCK"/>
+<xsl:param name="LINE"/>
+<xsl:param name="WORD"/>
+<xsl:param name="GLYPH"/>
 <xsl:variable name="fileGroups">
+
+<xsl:choose>
+<xsl:when test="$PAGE = '1'">
+<group locationPrefix="" locationSuffix="">OCR-D-GT-SEG-PAGE</group>
+</xsl:when>
+<xsl:when test="$BLOCK ='1'">
+<group locationPrefix="" locationSuffix="">OCR-D-GT-SEG-BLOCK</group>
+</xsl:when>
+</xsl:choose>
 <group width="800" locationPrefix="" locationSuffix="">DEFAULT</group>
 <group width="400" locationPrefix="" locationSuffix="">MIN</group>
 <group width="160" locationPrefix="" locationSuffix="">THUMBS</group>
