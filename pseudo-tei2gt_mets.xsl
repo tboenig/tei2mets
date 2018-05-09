@@ -24,29 +24,17 @@ xmlns:DV="http://dfg-viewer.de/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-ins
 xmlns:xd="http://www.oxygenxml.com/ns/doc/xsl" exclude-result-prefixes="xs" version="2.0">
 <xd:doc scope="stylesheet">
 <xd:desc>
-<xd:p>
-<xd:p> <xd:b>Created on:</xd:b> Apr 17, 2011 </xd:p>
-<xd:p> <xd:b>Author:</xd:b> cmahnke </xd:p>
-</xd:p>
+<xd:p><xd:p> <xd:b>Created on:</xd:b> Apr 17, 2011 </xd:p>
+<xd:p> <xd:b>Author:</xd:b> cmahnke </xd:p></xd:p>
 <xd:p/>
-<xd:p>
-<xd:p> <xd:b>Revised on:</xd:b> Juni 28, 2017 </xd:p>
-<xd:p> <xd:b>Author:</xd:b> mboenig </xd:p>
-</xd:p>
+<xd:p><xd:p> <xd:b>Revised on:</xd:b> Juni 28, 2017 </xd:p>
+<xd:p> <xd:b>Author:</xd:b> mboenig </xd:p></xd:p>
 <xd:p/>
 </xd:desc>
 </xd:doc>
 
 <xsl:output encoding="UTF-8" exclude-result-prefixes="#all" indent="yes"/>
-<xsl:param name="to_use"/>
-<xsl:param name="identifier">
-<xsl:choose>
-<xsl:when test="//TEI:fileDesc/TEI:publicationStmt/TEI:idno/TEI:idno[@type = 'DTADirName']">
-<xsl:value-of select="//TEI:fileDesc/TEI:publicationStmt/TEI:idno/TEI:idno[@type = 'DTADirName']"/>
-</xsl:when>
-<xsl:otherwise>DTADirName_nicht_vorhanden</xsl:otherwise>
-</xsl:choose>
-</xsl:param>
+<xsl:param name="identifier"><xsl:choose><xsl:when test="//TEI:fileDesc/TEI:publicationStmt/TEI:idno/TEI:idno[@type = 'DTADirName']"><xsl:value-of select="//TEI:fileDesc/TEI:publicationStmt/TEI:idno/TEI:idno[@type = 'DTADirName']"/></xsl:when><xsl:otherwise>DTADirName_nicht_vorhanden</xsl:otherwise></xsl:choose></xsl:param>
 <xsl:param name="locationPrefix">http://media.dwds.de/dta/images/</xsl:param>
 <xsl:param name="locationSuffix">.jpg</xsl:param>
 <xsl:param name="multipleHead" select="true()" as="xs:boolean"/>
@@ -54,31 +42,14 @@ xmlns:xd="http://www.oxygenxml.com/ns/doc/xsl" exclude-result-prefixes="xs" vers
 <xsl:variable name="locPrefix">loc</xsl:variable>
 <xsl:variable name="filePrefix">file</xsl:variable>
 <xsl:variable name="useOrWidth">width</xsl:variable>
-<xsl:variable name="fileGroups">
-<xsl:choose>
-<xsl:when test="$to_use ='gt'">
 <!-- 
-<mets:fileGrp USE="OCR-D-GT-SEG-PAGE"> 	Page segmentation ground truth
+<mets:fileGrp USE="OCR-D-GT-SEG-PAGE"> 		Page segmentation ground truth
 <mets:fileGrp USE="OCR-D-GT-SEG-BLOCK"> 	Block segmentation ground truth
-<mets:fileGrp USE="OCR-D-GT-SEG-LINE"> 	Line segmentation ground truth
-<mets:fileGrp USE="OCR-D-GT-SEG-WORD"> 	Word segmentation ground truth
+<mets:fileGrp USE="OCR-D-GT-SEG-LINE"> 		Line segmentation ground truth
+<mets:fileGrp USE="OCR-D-GT-SEG-WORD"> 		Word segmentation ground truth
 <mets:fileGrp USE="OCR-D-GT-SEG-GLYPH"> 	Glyph segmentation ground truth
  -->
-
-<group width="" locationPrefix="" locationSuffix="">OCR-D-GT-SEG-PAGE</group>
-<group width="" locationPrefix="" locationSuffix="">OCR-D-GT-SEG-BLOCK</group>
-<group width="" locationPrefix="" locationSuffix="">OCR-D-GT-SEG-LINE</group>
-<group width="" locationPrefix="" locationSuffix="">OCR-D-GT-SEG-WORD</group>
-<group width="" locationPrefix="" locationSuffix="">OCR-D-GT-SEG-GLYPH</group>
-</xsl:when>
-<xsl:otherwise>
-<group width="800" locationPrefix="" locationSuffix="">DEFAULT</group>
-<group width="400" locationPrefix="" locationSuffix="">MIN</group>
-<group width="160" locationPrefix="" locationSuffix="">THUMBS</group>
-<group width="1600" locationPrefix="" locationSuffix="">MAX</group>
-<group width="1600" locationPrefix="" locationSuffix="">DOWNLOAD</group>
-</xsl:otherwise>
-</xsl:choose>
+<xsl:variable name="fileGroups">
 <group width="800" locationPrefix="" locationSuffix="">DEFAULT</group>
 <group width="400" locationPrefix="" locationSuffix="">MIN</group>
 <group width="160" locationPrefix="" locationSuffix="">THUMBS</group>
@@ -90,7 +61,7 @@ xmlns:xd="http://www.oxygenxml.com/ns/doc/xsl" exclude-result-prefixes="xs" vers
 <METS:mets
 xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-3.xsd http://www.loc.gov/METS/ http://www.loc.gov/standards/mets/version17/mets.v1-7.xsd">
 <xsl:if test="$identifier = 'REPLACEME'">
-<xsl:comment>Replace the string 'REPLACEME' with the real identifier using sed, if no param was given</xsl:comment>
+<xsl:comment>Replace the string 'REPLACEME' with the real dentifier using sed, if no param was given</xsl:comment>
 </xsl:if>
 <xsl:call-template name="metsHeader"/>
 <!-- the file section -->
@@ -111,37 +82,19 @@ xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods
 <!-- The logical struct map -->
 <METS:structMap TYPE="LOGICAL">
 <xsl:choose>
-<xsl:when test="//TEI:fileDesc/TEI:titleStmt/TEI:title[@type = 'volume']">
+<xsl:when test="//TEI:fileDesc/TEI:titleStmt/TEI:title[@type='volume']">
 <METS:div TYPE="multivolume_work">
-<xsl:attribute name="ID">
-<xsl:value-of select="$locPrefix"/>
-<xsl:text>_</xsl:text>
-<xsl:number format="0001" value="1"/>
-</xsl:attribute>
+<xsl:attribute name="ID"><xsl:value-of select="$locPrefix"/><xsl:text>_</xsl:text><xsl:number format="0001" value="1"/></xsl:attribute>
 <xsl:choose>
-<xsl:when test="//TEI:fileDesc/TEI:titleStmt/TEI:title[@type = 'sub']">
-<xsl:attribute name="LABEL"><xsl:value-of
-select="//TEI:fileDesc/TEI:titleStmt/TEI:title[@type = 'main']"/>, <xsl:value-of
-select="//TEI:fileDesc/TEI:titleStmt/TEI:title[@type = 'sub']"/></xsl:attribute>
+<xsl:when test="//TEI:fileDesc/TEI:titleStmt/TEI:title[@type='sub']">
+<xsl:attribute name="LABEL"><xsl:value-of select="//TEI:fileDesc/TEI:titleStmt/TEI:title[@type='main']"/>, <xsl:value-of select="//TEI:fileDesc/TEI:titleStmt/TEI:title[@type='sub']"/></xsl:attribute>
 </xsl:when>
-<xsl:otherwise>
-<xsl:attribute name="LABEL">
-<xsl:value-of select="//TEI:fileDesc/TEI:titleStmt/TEI:title[@type = 'main']"/>
-</xsl:attribute>
-</xsl:otherwise>
+<xsl:otherwise><xsl:attribute name="LABEL"><xsl:value-of select="//TEI:fileDesc/TEI:titleStmt/TEI:title[@type='main']"/></xsl:attribute></xsl:otherwise>
 </xsl:choose>
 <METS:div TYPE="volume">
-<xsl:attribute name="DMDID">
-<xsl:text>dmdSec_</xsl:text>
-<xsl:number format="0001" value="1"/>
-</xsl:attribute>
-<xsl:attribute name="ADMID">
-<xsl:text>amdSec_</xsl:text>
-<xsl:number format="0001" value="1"/>
-</xsl:attribute>
-<xsl:attribute name="LABEL">
-<xsl:value-of select="//TEI:fileDesc/TEI:titleStmt/TEI:title[@type = 'volume']"/>
-</xsl:attribute>
+<xsl:attribute name="DMDID"><xsl:text>dmdSec_</xsl:text><xsl:number format="0001" value="1"/></xsl:attribute>
+<xsl:attribute name="ADMID"><xsl:text>amdSec_</xsl:text><xsl:number format="0001" value="1"/></xsl:attribute>
+<xsl:attribute name="LABEL"><xsl:value-of select="//TEI:fileDesc/TEI:titleStmt/TEI:title[@type='volume']"/></xsl:attribute>
 <xsl:apply-templates select="/TEI:TEI/TEI:text"/>
 </METS:div>
 </METS:div>
@@ -154,8 +107,7 @@ select="//TEI:fileDesc/TEI:titleStmt/TEI:title[@type = 'sub']"/></xsl:attribute>
 <xsl:number format="0001" value="1"/>
 </xsl:attribute>
 <xsl:apply-templates select="/TEI:TEI/TEI:text"/>
-</METS:div>
-</xsl:otherwise>
+</METS:div></xsl:otherwise>
 </xsl:choose>
 
 </METS:structMap>
@@ -183,7 +135,7 @@ select="//TEI:fileDesc/TEI:titleStmt/TEI:title[@type = 'sub']"/></xsl:attribute>
 <xsl:number format="0001" value="0"/>
 </xsl:attribute>
 </METS:smLink>
-<xsl:for-each select="//TEI:head | //TEI:titlePage[@type = 'main']">
+<xsl:for-each select="//TEI:head|//TEI:titlePage[@type='main']">
 <xsl:if test="not(preceding-sibling::TEI:head)">
 <xsl:variable name="childPbs" select="ancestor::TEI:div[1]/descendant::TEI:pb"/>
 <xsl:variable name="from">
@@ -357,14 +309,7 @@ select="//TEI:fileDesc/TEI:titleStmt/TEI:title[@type = 'sub']"/></xsl:attribute>
 
 
 <xsl:template match="TEI:titlePage">
-<xsl:variable name="LabelType">
-<xsl:choose>
-<xsl:when test=".[@type = 'main']">title_page</xsl:when>
-<xsl:otherwise>
-<xsl:value-of select="@type"/>
-</xsl:otherwise>
-</xsl:choose>
-</xsl:variable>
+<xsl:variable name="LabelType"><xsl:choose><xsl:when test=".[@type = 'main']">title_page</xsl:when><xsl:otherwise><xsl:value-of select="@type"/></xsl:otherwise></xsl:choose></xsl:variable>
 <xsl:attribute name="ID">
 <xsl:call-template name="createId">
 <xsl:with-param name="prefix">
@@ -397,17 +342,8 @@ select="//TEI:fileDesc/TEI:titleStmt/TEI:title[@type = 'sub']"/></xsl:attribute>
 
 
 <xsl:template match="TEI:head">
-<xsl:variable name="text_head">
-<xsl:value-of select="text() | TEI:hi"/>
-</xsl:variable>
-<xsl:variable name="LabelType">
-<xsl:choose>
-<xsl:when test="parent::TEI:div/@type">
-<xsl:value-of select="parent::TEI:div/@type"/>
-</xsl:when>
-<xsl:otherwise>Chapter</xsl:otherwise>
-</xsl:choose>
-</xsl:variable>
+<xsl:variable name="text_head"><xsl:value-of select="text() | TEI:hi"/></xsl:variable>
+<xsl:variable name="LabelType"><xsl:choose><xsl:when test="parent::TEI:div/@type"><xsl:value-of select="parent::TEI:div/@type"/></xsl:when><xsl:otherwise>Chapter</xsl:otherwise></xsl:choose></xsl:variable>
 <!--<xsl:if test="parent::TEI:div/count(child::TEI:head) > 1">
 <xsl:message>Div element contains more then one head, only using the first one!</xsl:message>-->
 <!--</xsl:if>-->
@@ -514,27 +450,21 @@ select="//TEI:fileDesc/TEI:titleStmt/TEI:title[@type = 'sub']"/></xsl:attribute>
 <MODS:part>
 <xsl:attribute name="order">
 <xsl:choose>
-<xsl:when
-test="TEI:TEI/TEI:teiHeader/TEI:fileDesc/TEI:titleStmt/TEI:title[@type = 'volume'][matches(@n, ',')]">
-<xsl:analyze-string
-select="TEI:TEI/TEI:teiHeader/TEI:fileDesc/TEI:titleStmt/TEI:title[@type = 'volume']/@n"
-regex="(\d+),*(\d*)">
+<xsl:when test="TEI:TEI/TEI:teiHeader/TEI:fileDesc/TEI:titleStmt/TEI:title[@type = 'volume'] [matches (@n, ',')]" >
+<xsl:analyze-string select="TEI:TEI/TEI:teiHeader/TEI:fileDesc/TEI:titleStmt/TEI:title[@type = 'volume']/@n" regex="(\d+),*(\d*)">
 <xsl:matching-substring>
 <xsl:value-of select="regex-group(2)"/>
 </xsl:matching-substring>
 </xsl:analyze-string>
 </xsl:when>
 <xsl:otherwise>
-<xsl:value-of
-select="TEI:TEI/TEI:teiHeader/TEI:fileDesc/TEI:titleStmt/TEI:title[@type = 'volume']/@n"/>
-</xsl:otherwise>
+<xsl:value-of select="TEI:TEI/TEI:teiHeader/TEI:fileDesc/TEI:titleStmt/TEI:title[@type = 'volume']/@n"/></xsl:otherwise>
 </xsl:choose>
 </xsl:attribute>
 <MODS:detail>
 <xsl:attribute name="type">volume</xsl:attribute>
 <MODS:number>
-<xsl:value-of select="TEI:TEI/TEI:teiHeader/TEI:fileDesc/TEI:titleStmt/TEI:title[@type = 'volume']"
-/>
+<xsl:value-of select="TEI:TEI/TEI:teiHeader/TEI:fileDesc/TEI:titleStmt/TEI:title[@type = 'volume']"/>
 </MODS:number>
 </MODS:detail>
 </MODS:part>
@@ -547,7 +477,7 @@ select="TEI:TEI/TEI:teiHeader/TEI:fileDesc/TEI:titleStmt/TEI:title[@type = 'volu
 <MODS:titleInfo>
 <MODS:title>
 <xsl:value-of
-select="//TEI:fileDesc/TEI:titleStmt/TEI:respStmt[@corresp = '#availability-textsource-1']/orgName"
+select="//TEI:fileDesc/TEI:titleStmt/TEI:respStmt[@corresp='#availability-textsource-1']/orgName"
 />
 </MODS:title>
 </MODS:titleInfo>
@@ -569,9 +499,9 @@ select="//TEI:fileDesc/TEI:titleStmt/TEI:respStmt[@corresp = '#availability-text
 </MODS:displayForm>
 </MODS:name>
 <xsl:choose>
-<xsl:when test="//TEI:fileDesc/TEI:titleStmt/TEI:respStmt[@corresp = '#availability-textsource-1']">
+<xsl:when test="//TEI:fileDesc/TEI:titleStmt/TEI:respStmt[@corresp='#availability-textsource-1']">
 <xsl:for-each
-select="//TEI:fileDesc/TEI:titleStmt/TEI:respStmt[@corresp = '#availability-textsource-1']/TEI:persName">
+select="//TEI:fileDesc/TEI:titleStmt/TEI:respStmt[@corresp='#availability-textsource-1']/TEI:persName">
 <MODS:name type="personal">
 <MODS:role>
 <MODS:roleTerm authority="marcrelator" type="code">edt</MODS:roleTerm>
@@ -649,9 +579,7 @@ select="//TEI:fileDesc/TEI:titleStmt/TEI:respStmt[@corresp = '#availability-text
 <DV:reference/>
 <DV:presentation>
 <xsl:choose>
-<xsl:when test="//TEI:idno[@type = 'URLWeb']">
-<xsl:value-of select="//TEI:fileDesc/TEI:publicationStmt/TEI:idno/TEI:idno[@type = 'URLWeb']"/>
-</xsl:when>
+<xsl:when test="//TEI:idno[@type='URLWeb']"><xsl:value-of select="//TEI:fileDesc/TEI:publicationStmt/TEI:idno/TEI:idno[@type='URLWeb']"/></xsl:when>
 </xsl:choose>
 </DV:presentation>
 </DV:links>
