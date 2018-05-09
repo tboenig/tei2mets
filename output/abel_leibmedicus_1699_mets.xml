@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<METS:mets xmlns:TEI="http://www.tei-c.org/ns/1.0"
+           xmlns:xlink="http://www.w3.org/1999/xlink"
+           xmlns:DC="http://purl.org/dc/elements/1.1/"
+           xmlns:MODS="http://www.loc.gov/mods/v3"
+           xmlns:METS="http://www.loc.gov/METS/"
+           xmlns:DV="http://dfg-viewer.de/"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:xd="http://www.oxygenxml.com/ns/doc/xsl"
+           xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-3.xsd http://www.loc.gov/METS/ http://www.loc.gov/standards/mets/version17/mets.v1-7.xsd">
+   <METS:dmdSec ID="dmdSec_0001">
+      <METS:mdWrap MDTYPE="MODS">
+         <METS:xmlData>
+            <MODS:mods>
+               <MODS:location>
+                  <MODS:physicalLocation>SLUB Dresden</MODS:physicalLocation>
+                  <MODS:shelfLocator>SLUB Dresden, Diaet.568</MODS:shelfLocator>
+                  <MODS:url>URL: http://slubdd.de/katalog?TN_libero_mab238405</MODS:url>
+               </MODS:location>
+               <MODS:originInfo>
+                  <MODS:place>
+                     <MODS:placeTerm type="text">Leipzig</MODS:placeTerm>
+                  </MODS:place>
+                  <MODS:dateIssued encoding="w3cdtf" keyDate="yes">1699</MODS:dateIssued>
+                  <MODS:publisher>Groschuff</MODS:publisher>
+               </MODS:originInfo>
+               <MODS:originInfo>
+                  <MODS:dateCaptured encoding="w3cdtf">2018-05-03T15:24:39Z</MODS:dateCaptured>
+                  <MODS:edition>[Electronic ed.]</MODS:edition>
+               </MODS:originInfo>
+               <MODS:classification authority="DTA">Fachtext</MODS:classification>
+               <MODS:classification authority="DTA">Medizin</MODS:classification>
+               <MODS:identifier type="dtaid">20000</MODS:identifier>
+               <MODS:titleInfo>
+                  <MODS:title>Wohlerfahrner Leib-Medicus Der Studenten</MODS:title>
+                  <MODS:subTitle>welcher So wohl allen auf Schulen Gymnasiis und Universitäten Lebenden oder auf Reisen begriffenen gelehrten Personen/ als auch allen Menschen insgemein die nöthigsten Reguln und herrlichsten Artzeneyen mittheilet/ Krafft deren sie nicht allein die Gesundheit nechst Gott erhalten/ sondern auch die zugestossenen Kranckheiten abwenden und vertreiben können</MODS:subTitle>
+               </MODS:titleInfo>
+               <MODS:part order="">
+                  <MODS:detail type="volume">
+                     <MODS:number/>
+                  </MODS:detail>
+               </MODS:part>
+               <MODS:language>
+                  <MODS:languageTerm authority="iso639-2b" type="code">deu</MODS:languageTerm>
+               </MODS:language>
+               <MODS:relatedItem type="series">
+                  <MODS:titleInfo>
+                     <MODS:title/>
+                  </MODS:titleInfo>
+               </MODS:relatedItem>
+               <MODS:name type="personal">
+                  <MODS:role>
+                     <MODS:roleTerm authority="marcrelator" type="code">aut</MODS:roleTerm>
+                  </MODS:role>
+                  <MODS:namePart type="family">Abel</MODS:namePart>
+                  <MODS:namePart type="given">Heinrich Caspar</MODS:namePart>
+                  <MODS:displayForm>Heinrich Caspar Abel</MODS:displayForm>
+               </MODS:name>
+               <MODS:physicalDescription>
+                  <MODS:extent>[12] Bl., 314 S., [11] Bl., 45 S., [1] Bl. : Frontisp. (Kupferst.)</MODS:extent>
+               </MODS:physicalDescription>
+               <MODS:extension>
+                  <zvdd:zvddWrap xmlns:zvdd="http://zvdd.gdz-cms.de/">
+                     <zvdd:titleWord>Wohlerfahrner Leib-Medicus Der Studenten welcher So wohl allen auf Schulen Gymnasiis und Universitäten Lebenden oder auf Reisen begriffenen gelehrten Personen/ als auch allen Menschen insgemein die nöthigsten Reguln und herrlichsten Artzeneyen mittheilet/ Krafft deren sie nicht allein die Gesundheit nechst Gott erhalten/ sondern auch die zugestossenen Kranckheiten abwenden und vertreiben können</zvdd:titleWord>
+                  </zvdd:zvddWrap>
+               </MODS:extension>
+            </MODS:mods>
+         </METS:xmlData>
+      </METS:mdWrap>
+   </METS:dmdSec>
+   <METS:amdSec ID="amdSec_0001">
+      <METS:rightsMD ID="rights_0001">
+         <METS:mdWrap MDTYPE="OTHER" OTHERMDTYPE="DVRIGHTS" MIMETYPE="text/xml">
+            <METS:xmlData>
+               <DV:rights>
+                  <DV:owner>Berlin-Brandenburgische Akademie der Wissenschaften Deutsches Textarchiv</DV:owner>
+                  <DV:ownerLogo>http://www.deutschestextarchiv.de/static/images/dta.svg</DV:ownerLogo>
+                  <DV:ownerSiteURL>http://deutschestextarchiv.de</DV:ownerSiteURL>
+                  <DV:ownerContact>mailto:redaktion@deutschestextarchiv.de</DV:ownerContact>
+               </DV:rights>
+            </METS:xmlData>
+         </METS:mdWrap>
+      </METS:rightsMD>
+      <METS:digiprovMD ID="digiprovMD_0001">
+         <METS:mdWrap MIMETYPE="text/xml" MDTYPE="OTHER" OTHERMDTYPE="DVLINKS">
+            <METS:xmlData>
+               <DV:links>
+                  <DV:reference/>
+                  <DV:presentation>http://www.deutschestextarchiv.de/abel_leibmedicus_1699</DV:presentation>
+               </DV:links>
+            </METS:xmlData>
+         </METS:mdWrap>
+      </METS:digiprovMD>
+   </METS:amdSec>
+   <METS:fileSec>
+      <METS:fileGrp USE="DEFAULT"/>
+      <METS:fileGrp USE="MIN"/>
+      <METS:fileGrp USE="THUMBS"/>
+      <METS:fileGrp USE="MAX"/>
+      <METS:fileGrp USE="DOWNLOAD"/>
+   </METS:fileSec>
+   <METS:structMap TYPE="LOGICAL">
+      <METS:div TYPE="Monograph"
+                DMDID="dmdSec_0001"
+                ADMID="amdSec_0001"
+                ID="loc_0001"/>
+   </METS:structMap>
+   <METS:structMap TYPE="PHYSICAL">
+      <METS:div TYPE="physSequence" ID="phys_0000"/>
+   </METS:structMap>
+   <METS:structLink>
+      <METS:smLink xlink:from="loc_0001" xlink:to="phys_0000"/>
+   </METS:structLink>
+</METS:mets>

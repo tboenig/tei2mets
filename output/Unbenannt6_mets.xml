@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<METS:mets xmlns:TEI="http://www.tei-c.org/ns/1.0"
+           xmlns:xlink="http://www.w3.org/1999/xlink"
+           xmlns:DC="http://purl.org/dc/elements/1.1/"
+           xmlns:MODS="http://www.loc.gov/mods/v3"
+           xmlns:METS="http://www.loc.gov/METS/"
+           xmlns:DV="http://dfg-viewer.de/"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:xd="http://www.oxygenxml.com/ns/doc/xsl"
+           xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-3.xsd http://www.loc.gov/METS/ http://www.loc.gov/standards/mets/version17/mets.v1-7.xsd">
+   <METS:dmdSec ID="dmdSec_0001">
+      <METS:mdWrap MDTYPE="MODS">
+         <METS:xmlData>
+            <MODS:mods>
+               <MODS:location>
+                  <MODS:physicalLocation>Harold B. Lee Library</MODS:physicalLocation>
+                  <MODS:shelfLocator/>
+                  <MODS:url/>
+               </MODS:location>
+               <MODS:originInfo>
+                  <MODS:place>
+                     <MODS:placeTerm type="text">München</MODS:placeTerm>
+                  </MODS:place>
+                  <MODS:dateIssued encoding="w3cdtf" keyDate="yes">1919</MODS:dateIssued>
+                  <MODS:publisher>
+Duncker &amp; Humblot
+</MODS:publisher>
+               </MODS:originInfo>
+               <MODS:originInfo>
+                  <MODS:dateCaptured encoding="w3cdtf">2018-05-08T11:01:17Z</MODS:dateCaptured>
+                  <MODS:edition>[Electronic ed.]</MODS:edition>
+               </MODS:originInfo>
+               <MODS:classification authority="DTA">Wissenschaft</MODS:classification>
+               <MODS:classification authority="DTA">Soziologie</MODS:classification>
+               <MODS:identifier type="dtaid">32402</MODS:identifier>
+               <MODS:titleInfo>
+                  <MODS:title>Politik als Beruf</MODS:title>
+                  <MODS:subTitle/>
+               </MODS:titleInfo>
+               <MODS:part order="">
+                  <MODS:detail type="volume">
+                     <MODS:number/>
+                  </MODS:detail>
+               </MODS:part>
+               <MODS:language>
+                  <MODS:languageTerm authority="iso639-2b" type="code">deu</MODS:languageTerm>
+               </MODS:language>
+               <MODS:relatedItem type="series">
+                  <MODS:titleInfo>
+                     <MODS:title/>
+                  </MODS:titleInfo>
+               </MODS:relatedItem>
+               <MODS:name type="personal">
+                  <MODS:role>
+                     <MODS:roleTerm authority="marcrelator" type="code">aut</MODS:roleTerm>
+                  </MODS:role>
+                  <MODS:namePart type="family">Weber</MODS:namePart>
+                  <MODS:namePart type="given">Max</MODS:namePart>
+                  <MODS:displayForm>Max Weber</MODS:displayForm>
+               </MODS:name>
+               <MODS:physicalDescription>
+                  <MODS:extent/>
+               </MODS:physicalDescription>
+               <MODS:extension>
+                  <zvdd:zvddWrap xmlns:zvdd="http://zvdd.gdz-cms.de/">
+                     <zvdd:titleWord>Politik als Beruf</zvdd:titleWord>
+                  </zvdd:zvddWrap>
+               </MODS:extension>
+            </MODS:mods>
+         </METS:xmlData>
+      </METS:mdWrap>
+   </METS:dmdSec>
+   <METS:amdSec ID="amdSec_0001">
+      <METS:rightsMD ID="rights_0001">
+         <METS:mdWrap MDTYPE="OTHER" OTHERMDTYPE="DVRIGHTS" MIMETYPE="text/xml">
+            <METS:xmlData>
+               <DV:rights>
+                  <DV:owner>Berlin-Brandenburgische Akademie der Wissenschaften Deutsches Textarchiv</DV:owner>
+                  <DV:ownerLogo>http://www.deutschestextarchiv.de/static/images/dta.svg</DV:ownerLogo>
+                  <DV:ownerSiteURL>http://deutschestextarchiv.de</DV:ownerSiteURL>
+                  <DV:ownerContact>mailto:redaktion@deutschestextarchiv.de</DV:ownerContact>
+               </DV:rights>
+            </METS:xmlData>
+         </METS:mdWrap>
+      </METS:rightsMD>
+      <METS:digiprovMD ID="digiprovMD_0001">
+         <METS:mdWrap MIMETYPE="text/xml" MDTYPE="OTHER" OTHERMDTYPE="DVLINKS">
+            <METS:xmlData>
+               <DV:links>
+                  <DV:reference/>
+                  <DV:presentation>http://www.deutschestextarchiv.de/weber_politik_1919</DV:presentation>
+               </DV:links>
+            </METS:xmlData>
+         </METS:mdWrap>
+      </METS:digiprovMD>
+   </METS:amdSec>
+   <METS:fileSec>
+      <METS:fileGrp USE="DEFAULT">
+         <METS:file MIMETYPE="image/jpeg" ID="file_DEFAULT_0001">
+            <METS:FLocat LOCTYPE="URL"
+                         xlink:href="http://media.dwds.de/dta/images/weber_politik_1919/weber_politik_1919_0001_800px.jpg"/>
+         </METS:file>
+         <METS:file MIMETYPE="image/jpeg" ID="file_DEFAULT_0002">
+            <METS:FLocat LOCTYPE="URL"
+                         xlink:href="http://media.dwds.de/dta/images/weber_politik_1919/weber_politik_1919_0002_800px.jpg"/>
+         </METS:file>
+      </METS:fileGrp>
+      <METS:fileGrp USE="MIN">
+         <METS:file MIMETYPE="image/jpeg" ID="file_MIN_0001">
+            <METS:FLocat LOCTYPE="URL"
+                         xlink:href="http://media.dwds.de/dta/images/weber_politik_1919/weber_politik_1919_0001_400px.jpg"/>
+         </METS:file>
+         <METS:file MIMETYPE="image/jpeg" ID="file_MIN_0002">
+            <METS:FLocat LOCTYPE="URL"
+                         xlink:href="http://media.dwds.de/dta/images/weber_politik_1919/weber_politik_1919_0002_400px.jpg"/>
+         </METS:file>
+      </METS:fileGrp>
+      <METS:fileGrp USE="THUMBS">
+         <METS:file MIMETYPE="image/jpeg" ID="file_THUMBS_0001">
+            <METS:FLocat LOCTYPE="URL"
+                         xlink:href="http://media.dwds.de/dta/images/weber_politik_1919/weber_politik_1919_0001_160px.jpg"/>
+         </METS:file>
+         <METS:file MIMETYPE="image/jpeg" ID="file_THUMBS_0002">
+            <METS:FLocat LOCTYPE="URL"
+                         xlink:href="http://media.dwds.de/dta/images/weber_politik_1919/weber_politik_1919_0002_160px.jpg"/>
+         </METS:file>
+      </METS:fileGrp>
+      <METS:fileGrp USE="MAX">
+         <METS:file MIMETYPE="image/jpeg" ID="file_MAX_0001">
+            <METS:FLocat LOCTYPE="URL"
+                         xlink:href="http://media.dwds.de/dta/images/weber_politik_1919/weber_politik_1919_0001_1600px.jpg"/>
+         </METS:file>
+         <METS:file MIMETYPE="image/jpeg" ID="file_MAX_0002">
+            <METS:FLocat LOCTYPE="URL"
+                         xlink:href="http://media.dwds.de/dta/images/weber_politik_1919/weber_politik_1919_0002_1600px.jpg"/>
+         </METS:file>
+      </METS:fileGrp>
+      <METS:fileGrp USE="DOWNLOAD">
+         <METS:file MIMETYPE="image/jpeg" ID="file_DOWNLOAD_0001">
+            <METS:FLocat LOCTYPE="URL"
+                         xlink:href="http://media.dwds.de/dta/images/weber_politik_1919/weber_politik_1919_0001_1600px.jpg"/>
+         </METS:file>
+         <METS:file MIMETYPE="image/jpeg" ID="file_DOWNLOAD_0002">
+            <METS:FLocat LOCTYPE="URL"
+                         xlink:href="http://media.dwds.de/dta/images/weber_politik_1919/weber_politik_1919_0002_1600px.jpg"/>
+         </METS:file>
+      </METS:fileGrp>
+   </METS:fileSec>
+   <METS:structMap TYPE="LOGICAL">
+      <METS:div TYPE="Monograph"
+                DMDID="dmdSec_0001"
+                ADMID="amdSec_0001"
+                ID="loc_0001"/>
+   </METS:structMap>
+   <METS:structMap TYPE="PHYSICAL">
+      <METS:div TYPE="physSequence" ID="phys_0000">
+         <METS:div TYPE="page" ORDER="1" ID="phys_0001">
+            <METS:fptr FILEID="file_DEFAULT_0001"/>
+            <METS:fptr FILEID="file_MIN_0001"/>
+            <METS:fptr FILEID="file_THUMBS_0001"/>
+            <METS:fptr FILEID="file_MAX_0001"/>
+            <METS:fptr FILEID="file_DOWNLOAD_0001"/>
+         </METS:div>
+         <METS:div TYPE="page" ORDER="2" ID="phys_0002">
+            <METS:fptr FILEID="file_DEFAULT_0002"/>
+            <METS:fptr FILEID="file_MIN_0002"/>
+            <METS:fptr FILEID="file_THUMBS_0002"/>
+            <METS:fptr FILEID="file_MAX_0002"/>
+            <METS:fptr FILEID="file_DOWNLOAD_0002"/>
+         </METS:div>
+      </METS:div>
+   </METS:structMap>
+   <METS:structLink>
+      <METS:smLink xlink:from="loc_0001" xlink:to="phys_0000"/>
+   </METS:structLink>
+</METS:mets>
