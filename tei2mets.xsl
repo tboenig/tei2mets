@@ -18,8 +18,8 @@
 -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 xmlns:TEI="http://www.tei-c.org/ns/1.0" xmlns:xlink="http://www.w3.org/1999/xlink"
-xmlns:DC="http://purl.org/dc/elements/1.1/" xmlns:MODS="http://www.loc.gov/mods/v3"
-xmlns:METS="http://www.loc.gov/METS/" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+xmlns:DC="http://purl.org/dc/elements/1.1/" xmlns:mods="http://www.loc.gov/mods/v3"
+xmlns:mets="http://www.loc.gov/METS/" xmlns:xs="http://www.w3.org/2001/XMLSchema"
 xmlns:DV="http://dfg-viewer.de/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xmlns:xd="http://www.oxygenxml.com/ns/doc/xsl" exclude-result-prefixes="xs" version="2.0">
 <xd:doc scope="stylesheet">
@@ -28,7 +28,7 @@ xmlns:xd="http://www.oxygenxml.com/ns/doc/xsl" exclude-result-prefixes="xs" vers
 <xd:p> <xd:b>Author:</xd:b> cmahnke </xd:p></xd:p>
 <xd:p/>
 <xd:p><xd:p> <xd:b>Revised on:</xd:b> Juni 28, 2017 </xd:p>
-<xd:p> <xd:b>Author:</xd:b> mboenig </xd:p></xd:p>
+<xd:p> <xd:b>Author:</xd:b> tboenig </xd:p></xd:p>
 <xd:p/>
 </xd:desc>
 </xd:doc>
@@ -52,14 +52,14 @@ xmlns:xd="http://www.oxygenxml.com/ns/doc/xsl" exclude-result-prefixes="xs" vers
 </xsl:variable>
 
 <xsl:template match="/">
-<METS:mets
+<mets:mets
 xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods/v3/mods-3-3.xsd http://www.loc.gov/METS/ http://www.loc.gov/standards/mets/version17/mets.v1-7.xsd">
 <xsl:if test="$identifier = 'REPLACEME'">
 <xsl:comment>Replace the string 'REPLACEME' with the real dentifier using sed, if no param was given</xsl:comment>
 </xsl:if>
 <xsl:call-template name="metsHeader"/>
 <!-- the file section -->
-<METS:fileSec>
+<mets:fileSec>
 <xsl:variable name="nodes" select="//TEI:pb"/>
 <xsl:for-each select="$fileGroups/group">
 <xsl:call-template name="pbFileSect">
@@ -72,12 +72,12 @@ xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods
 <xsl:with-param name="width" select="@width"/>
 </xsl:call-template>
 </xsl:for-each>
-</METS:fileSec>
+</mets:fileSec>
 <!-- The logical struct map -->
-<METS:structMap TYPE="LOGICAL">
+<mets:structMap TYPE="LOGICAL">
 <xsl:choose>
 <xsl:when test="//TEI:fileDesc/TEI:titleStmt/TEI:title[@type='volume']">
-<METS:div TYPE="multivolume_work">
+<mets:div TYPE="multivolume_work">
 <xsl:attribute name="ID"><xsl:value-of select="$locPrefix"/><xsl:text>_</xsl:text><xsl:number format="0001" value="1"/></xsl:attribute>
 <xsl:choose>
 <xsl:when test="//TEI:fileDesc/TEI:titleStmt/TEI:title[@type='sub']">
@@ -85,39 +85,39 @@ xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods
 </xsl:when>
 <xsl:otherwise><xsl:attribute name="LABEL"><xsl:value-of select="//TEI:fileDesc/TEI:titleStmt/TEI:title[@type='main']"/></xsl:attribute></xsl:otherwise>
 </xsl:choose>
-<METS:div TYPE="volume">
+<mets:div TYPE="volume">
 <xsl:attribute name="DMDID"><xsl:text>dmdSec_</xsl:text><xsl:number format="0001" value="1"/></xsl:attribute>
 <xsl:attribute name="ADMID"><xsl:text>amdSec_</xsl:text><xsl:number format="0001" value="1"/></xsl:attribute>
 <xsl:attribute name="LABEL"><xsl:value-of select="//TEI:fileDesc/TEI:titleStmt/TEI:title[@type='volume']"/></xsl:attribute>
 <xsl:apply-templates select="/TEI:TEI/TEI:text"/>
-</METS:div>
-</METS:div>
+</mets:div>
+</mets:div>
 </xsl:when>
 <xsl:otherwise>
-<METS:div TYPE="Monograph" DMDID="dmdSec_0001" ADMID="amdSec_0001">
+<mets:div TYPE="Monograph" DMDID="dmdSec_0001" ADMID="amdSec_0001">
 <xsl:attribute name="ID">
 <xsl:value-of select="$locPrefix"/>
 <xsl:text>_</xsl:text>
 <xsl:number format="0001" value="1"/>
 </xsl:attribute>
 <xsl:apply-templates select="/TEI:TEI/TEI:text"/>
-</METS:div></xsl:otherwise>
+</mets:div></xsl:otherwise>
 </xsl:choose>
 
-</METS:structMap>
+</mets:structMap>
 <!-- The physical struct map -->
-<METS:structMap TYPE="PHYSICAL">
-<METS:div TYPE="physSequence">
+<mets:structMap TYPE="PHYSICAL">
+<mets:div TYPE="physSequence">
 <xsl:attribute name="ID">
 <xsl:value-of select="$physPrefix"/>
 <xsl:text>_</xsl:text>
 <xsl:number format="0001" value="0"/>
 </xsl:attribute>
 <xsl:call-template name="pbPhysMap"/>
-</METS:div>
-</METS:structMap>
-<METS:structLink>
-<METS:smLink>
+</mets:div>
+</mets:structMap>
+<mets:structLink>
+<mets:smLink>
 <xsl:attribute name="xlink:from">
 <xsl:value-of select="$locPrefix"/>
 <xsl:text>_</xsl:text>
@@ -128,7 +128,7 @@ xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods
 <xsl:text>_</xsl:text>
 <xsl:number format="0001" value="0"/>
 </xsl:attribute>
-</METS:smLink>
+</mets:smLink>
 <xsl:for-each select="//TEI:head|//TEI:titlePage[@type='main']">
 <xsl:if test="not(preceding-sibling::TEI:head)">
 <xsl:variable name="childPbs" select="ancestor::TEI:div[1]/descendant::TEI:pb"/>
@@ -143,7 +143,7 @@ xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods
 </xsl:variable>
 <xsl:choose>
 <xsl:when test="count($childPbs) = 0">
-<METS:smLink>
+<mets:smLink>
 <xsl:attribute name="xlink:from">
 <xsl:value-of select="$from"/>
 </xsl:attribute>
@@ -152,11 +152,11 @@ xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods
 <xsl:text>_</xsl:text>
 <xsl:number format="0001" value="count(preceding::TEI:pb)"/>
 </xsl:attribute>
-</METS:smLink>
+</mets:smLink>
 </xsl:when>
 <xsl:otherwise>
 <xsl:for-each select="$childPbs">
-<METS:smLink>
+<mets:smLink>
 <xsl:attribute name="xlink:from">
 <xsl:value-of select="$from"/>
 </xsl:attribute>
@@ -165,20 +165,20 @@ xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods
 <xsl:text>_</xsl:text>
 <xsl:number format="0001" value="count(preceding::TEI:pb)"/>
 </xsl:attribute>
-</METS:smLink>
+</mets:smLink>
 </xsl:for-each>
 </xsl:otherwise>
 </xsl:choose>
 </xsl:if>
 </xsl:for-each>
-</METS:structLink>
-</METS:mets>
+</mets:structLink>
+</mets:mets>
 </xsl:template>
 
 <!-- Creates the physical struct map -->
 <xsl:template name="pbPhysMap">
 <xsl:for-each select="//TEI:pb">
-<METS:div TYPE="page">
+<mets:div TYPE="page">
 <xsl:variable name="pageNr">
 <xsl:number level="any" count="//TEI:pb"/>
 </xsl:variable>
@@ -194,7 +194,7 @@ xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods
 <xsl:value-of select="$pageId"/>
 </xsl:attribute>
 <xsl:for-each select="$fileGroups/group">
-<METS:fptr>
+<mets:fptr>
 <xsl:attribute name="FILEID">
 <xsl:value-of select="$filePrefix"/>
 <xsl:text>_</xsl:text>
@@ -202,9 +202,9 @@ xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods
 <xsl:text>_</xsl:text>
 <xsl:value-of select="$pageId"/>
 </xsl:attribute>
-</METS:fptr>
+</mets:fptr>
 </xsl:for-each>
-</METS:div>
+</mets:div>
 </xsl:for-each>
 </xsl:template>
 
@@ -216,12 +216,12 @@ xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods
 <xsl:param name="prefix" select="$locationPrefix"/>
 <xsl:param name="suffix" select="$locationSuffix"/>
 <xsl:param name="width"/>
-<METS:fileGrp>
+<mets:fileGrp>
 <xsl:attribute name="USE">
 <xsl:value-of select="$use"/>
 </xsl:attribute>
 <xsl:for-each select="$nodes">
-<METS:file MIMETYPE="image/jpeg">
+<mets:file MIMETYPE="image/jpeg">
 <xsl:attribute name="ID">
 <xsl:value-of select="$filePrefix"/>
 <xsl:text>_</xsl:text>
@@ -229,7 +229,7 @@ xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods
 <xsl:text>_</xsl:text>
 <xsl:number format="0001" level="any" count="//TEI:pb"/>
 </xsl:attribute>
-<METS:FLocat LOCTYPE="URL">
+<mets:FLocat LOCTYPE="URL">
 <xsl:attribute name="xlink:href">
 <xsl:choose>
 <xsl:when test="$prefix = ''">
@@ -281,24 +281,24 @@ xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods
 </xsl:otherwise>
 </xsl:choose>
 </xsl:attribute>
-</METS:FLocat>
-</METS:file>
+</mets:FLocat>
+</mets:file>
 </xsl:for-each>
-</METS:fileGrp>
+</mets:fileGrp>
 </xsl:template>
 
 
 <xsl:template match="TEI:front">
-<METS:div>
+<mets:div>
 <xsl:apply-templates select="TEI:titlePage"/>
-</METS:div>
+</mets:div>
 </xsl:template>
 
 
 <xsl:template match="TEI:back">
-<METS:div>
+<mets:div>
 <xsl:apply-templates select="TEI:titlePage"/>
-</METS:div>
+</mets:div>
 </xsl:template>
 
 
@@ -323,9 +323,9 @@ xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods
 <xsl:choose>
 <!-- Get rid of empty div tags -->
 <xsl:when test="TEI:head">
-<METS:div>
+<mets:div>
 <xsl:apply-templates select="TEI:div | TEI:head"/>
-</METS:div>
+</mets:div>
 </xsl:when>
 <xsl:otherwise>
 <xsl:apply-templates select="TEI:div | TEI:head"/>
@@ -377,71 +377,71 @@ xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods
 
 <xsl:template match="text()"/>
 <xsl:template name="metsHeader">
-<METS:dmdSec ID="dmdSec_0001">
-<METS:mdWrap MDTYPE="MODS">
-<METS:xmlData>
-<MODS:mods>
+<mets:dmdSec ID="dmdSec_0001">
+<mets:mdWrap MDTYPE="MODS">
+<mets:xmlData>
+<mods:mods>
 
 <!--neu-->
-<MODS:location>
-<MODS:physicalLocation>
+<mods:location>
+<mods:physicalLocation>
 <xsl:value-of select="//TEI:msIdentifier/TEI:repository"/>
-</MODS:physicalLocation>
-<MODS:shelfLocator>
+</mods:physicalLocation>
+<mods:shelfLocator>
 <xsl:value-of select="//TEI:idno/TEI:idno[@type = 'shelfmark']"/>
-</MODS:shelfLocator>
-<MODS:url>
+</mods:shelfLocator>
+<mods:url>
 <xsl:value-of select="//TEI:idno/TEI:idno[@type = 'URLCatalogue']"/>
-</MODS:url>
-</MODS:location>
-<MODS:originInfo>
-<MODS:place>
-<MODS:placeTerm type="text">
+</mods:url>
+</mods:location>
+<mods:originInfo>
+<mods:place>
+<mods:placeTerm type="text">
 <xsl:value-of select="//TEI:sourceDesc/TEI:biblFull/TEI:publicationStmt/TEI:pubPlace"/>
-</MODS:placeTerm>
-</MODS:place>
-<MODS:dateIssued encoding="w3cdtf" keyDate="yes">
+</mods:placeTerm>
+</mods:place>
+<mods:dateIssued encoding="w3cdtf" keyDate="yes">
 <xsl:value-of select="//TEI:sourceDesc/TEI:biblFull/TEI:publicationStmt/TEI:date"/>
-</MODS:dateIssued>
-<MODS:publisher>
+</mods:dateIssued>
+<mods:publisher>
 <xsl:value-of select="//TEI:sourceDesc/TEI:biblFull/TEI:publicationStmt/TEI:publisher"/>
-</MODS:publisher>
-</MODS:originInfo>
-<MODS:originInfo>
-<MODS:dateCaptured encoding="w3cdtf">
+</mods:publisher>
+</mods:originInfo>
+<mods:originInfo>
+<mods:dateCaptured encoding="w3cdtf">
 <xsl:value-of select="//TEI:fileDesc/TEI:publicationStmt/TEI:date"/>
-</MODS:dateCaptured>
-<MODS:edition>[Electronic ed.]</MODS:edition>
-</MODS:originInfo>
-<MODS:classification authority="DTA">
+</mods:dateCaptured>
+<mods:edition>[Electronic ed.]</mods:edition>
+</mods:originInfo>
+<mods:classification authority="DTA">
 <xsl:value-of select="//TEI:profileDesc/TEI:textClass/TEI:classCode[1]"/>
-</MODS:classification>
-<MODS:classification authority="DTA">
+</mods:classification>
+<mods:classification authority="DTA">
 <xsl:value-of select="//TEI:profileDesc/TEI:textClass/TEI:classCode[2]"/>
-</MODS:classification>
+</mods:classification>
 <xsl:choose>
 <xsl:when test="//TEI:fileDesc/TEI:publicationStmt/TEI:idno/TEI:idno[@type = 'urn']">
-<MODS:identifier type="urn">
+<mods:identifier type="urn">
 <xsl:value-of select="//TEI:fileDesc/TEI:publicationStmt/TEI:idno/TEI:idno[@type = 'URN']"/>
-</MODS:identifier>
+</mods:identifier>
 </xsl:when>
 </xsl:choose>
 <xsl:choose>
 <xsl:when test="//TEI:fileDesc/TEI:publicationStmt/TEI:idno/TEI:idno[@type = 'DTAID']">
-<MODS:identifier type="dtaid">
+<mods:identifier type="dtaid">
 <xsl:value-of select="//TEI:fileDesc/TEI:publicationStmt/TEI:idno/TEI:idno[@type = 'DTAID']"/>
-</MODS:identifier>
+</mods:identifier>
 </xsl:when>
 </xsl:choose>
-<MODS:titleInfo>
-<MODS:title>
+<mods:titleInfo>
+<mods:title>
 <xsl:value-of select="TEI:TEI/TEI:teiHeader/TEI:fileDesc/TEI:titleStmt/TEI:title[@type = 'main']"/>
-</MODS:title>
-<MODS:subTitle>
+</mods:title>
+<mods:subTitle>
 <xsl:value-of select="TEI:TEI/TEI:teiHeader/TEI:fileDesc/TEI:titleStmt/TEI:title[@type = 'sub']"/>
-</MODS:subTitle>
-</MODS:titleInfo>
-<MODS:part>
+</mods:subTitle>
+</mods:titleInfo>
+<mods:part>
 <xsl:attribute name="order">
 <xsl:choose>
 <xsl:when test="TEI:TEI/TEI:teiHeader/TEI:fileDesc/TEI:titleStmt/TEI:title[@type = 'volume'] [matches (@n, ',')]" >
@@ -455,120 +455,120 @@ xsi:schemaLocation="http://www.loc.gov/mods/v3 http://www.loc.gov/standards/mods
 <xsl:value-of select="TEI:TEI/TEI:teiHeader/TEI:fileDesc/TEI:titleStmt/TEI:title[@type = 'volume']/@n"/></xsl:otherwise>
 </xsl:choose>
 </xsl:attribute>
-<MODS:detail>
+<mods:detail>
 <xsl:attribute name="type">volume</xsl:attribute>
-<MODS:number>
+<mods:number>
 <xsl:value-of select="TEI:TEI/TEI:teiHeader/TEI:fileDesc/TEI:titleStmt/TEI:title[@type = 'volume']"/>
-</MODS:number>
-</MODS:detail>
-</MODS:part>
-<MODS:language>
-<MODS:languageTerm authority="iso639-2b" type="code">
+</mods:number>
+</mods:detail>
+</mods:part>
+<mods:language>
+<mods:languageTerm authority="iso639-2b" type="code">
 <xsl:value-of select="//TEI:langUsage/TEI:language/@ident"/>
-</MODS:languageTerm>
-</MODS:language>
-<MODS:relatedItem type="series">
-<MODS:titleInfo>
-<MODS:title>
+</mods:languageTerm>
+</mods:language>
+<mods:relatedItem type="series">
+<mods:titleInfo>
+<mods:title>
 <xsl:value-of
 select="//TEI:fileDesc/TEI:titleStmt/TEI:respStmt[@corresp='#availability-textsource-1']/orgName"
 />
-</MODS:title>
-</MODS:titleInfo>
-</MODS:relatedItem>
-<MODS:name type="personal">
-<MODS:role>
-<MODS:roleTerm authority="marcrelator" type="code">aut</MODS:roleTerm>
-</MODS:role>
-<MODS:namePart type="family">
+</mods:title>
+</mods:titleInfo>
+</mods:relatedItem>
+<mods:name type="personal">
+<mods:role>
+<mods:roleTerm authority="marcrelator" type="code">aut</mods:roleTerm>
+</mods:role>
+<mods:namePart type="family">
 <xsl:value-of select="//TEI:fileDesc/TEI:titleStmt/TEI:author/TEI:persName/TEI:surname"/>
-</MODS:namePart>
-<MODS:namePart type="given">
+</mods:namePart>
+<mods:namePart type="given">
 <xsl:value-of select="//TEI:fileDesc/TEI:titleStmt/TEI:author/TEI:persName/TEI:forename"/>
-</MODS:namePart>
-<MODS:displayForm>
+</mods:namePart>
+<mods:displayForm>
 <xsl:value-of select="//TEI:fileDesc/TEI:titleStmt/TEI:author/TEI:persName/TEI:forename"/>
 <xsl:text> </xsl:text>
 <xsl:value-of select="//TEI:fileDesc/TEI:titleStmt/TEI:author/TEI:persName/TEI:surname"/>
-</MODS:displayForm>
-</MODS:name>
+</mods:displayForm>
+</mods:name>
 <xsl:choose>
 <xsl:when test="//TEI:fileDesc/TEI:titleStmt/TEI:respStmt[@corresp='#availability-textsource-1']">
 <xsl:for-each
 select="//TEI:fileDesc/TEI:titleStmt/TEI:respStmt[@corresp='#availability-textsource-1']/TEI:persName">
-<MODS:name type="personal">
-<MODS:role>
-<MODS:roleTerm authority="marcrelator" type="code">edt</MODS:roleTerm>
-</MODS:role>
-<MODS:namePart type="family">
+<mods:name type="personal">
+<mods:role>
+<mods:roleTerm authority="marcrelator" type="code">edt</mods:roleTerm>
+</mods:role>
+<mods:namePart type="family">
 <xsl:value-of select="TEI:surname"/>
-</MODS:namePart>
-<MODS:namePart type="given">
+</mods:namePart>
+<mods:namePart type="given">
 <xsl:value-of select="TEI:forename"/>
-</MODS:namePart>
-</MODS:name>
+</mods:namePart>
+</mods:name>
 </xsl:for-each>
 </xsl:when>
 </xsl:choose>
-<MODS:physicalDescription>
-<MODS:extent>
+<mods:physicalDescription>
+<mods:extent>
 <xsl:value-of select="//TEI:fileDesc/TEI:sourceDesc/TEI:biblFull/TEI:extent/TEI:measure"/>
-</MODS:extent>
-</MODS:physicalDescription>
-<MODS:extension>
+</mods:extent>
+</mods:physicalDescription>
+<mods:extension>
 <zvdd:zvddWrap xmlns:zvdd="http://zvdd.gdz-cms.de/">
 <zvdd:titleWord>
 <xsl:value-of select="TEI:TEI/TEI:teiHeader/TEI:fileDesc/TEI:titleStmt/TEI:title"/>
 </zvdd:titleWord>
 </zvdd:zvddWrap>
-</MODS:extension>
+</mods:extension>
 <!--neu ende-->
-</MODS:mods>
-</METS:xmlData>
-</METS:mdWrap>
-</METS:dmdSec>
+</mods:mods>
+</mets:xmlData>
+</mets:mdWrap>
+</mets:dmdSec>
 <!-- Create DMD Sects for divs with multiple headings -->
 <xsl:if test="$multipleHead">
 <xsl:for-each select="//TEI:div[count(child::TEI:head) > 1]">
-<METS:dmdSec>
+<mets:dmdSec>
 <xsl:attribute name="ID">
 <xsl:call-template name="createId">
 <xsl:with-param name="prefix" select="'dmdSec_'"/>
 <xsl:with-param name="node" select="."/>
 </xsl:call-template>
 </xsl:attribute>
-<METS:mdWrap MDTYPE="MODS">
-<METS:xmlData>
-<MODS:mods>
+<mets:mdWrap MDTYPE="MODS">
+<mets:xmlData>
+<mods:mods>
 <xsl:for-each select="./TEI:head">
-<MODS:titleInfo>
-<MODS:title>
+<mods:titleInfo>
+<mods:title>
 <xsl:value-of select="."/>
-</MODS:title>
-</MODS:titleInfo>
+</mods:title>
+</mods:titleInfo>
 </xsl:for-each>
-</MODS:mods>
-</METS:xmlData>
-</METS:mdWrap>
-</METS:dmdSec>
+</mods:mods>
+</mets:xmlData>
+</mets:mdWrap>
+</mets:dmdSec>
 </xsl:for-each>
 </xsl:if>
-<METS:amdSec ID="amdSec_0001">
-<METS:rightsMD ID="rights_0001">
-<METS:mdWrap MDTYPE="OTHER" OTHERMDTYPE="DVRIGHTS" MIMETYPE="text/xml">
-<METS:xmlData>
+<mets:amdSec ID="amdSec_0001">
+<mets:rightsMD ID="rights_0001">
+<mets:mdWrap MDTYPE="OTHER" OTHERMDTYPE="DVRIGHTS" MIMETYPE="text/xml">
+<mets:xmlData>
 <DV:rights>
 <DV:owner>Berlin-Brandenburgische Akademie der Wissenschaften Deutsches Textarchiv</DV:owner>
 <DV:ownerLogo>http://www.deutschestextarchiv.de/static/images/dta.svg</DV:ownerLogo>
 <DV:ownerSiteURL>http://deutschestextarchiv.de</DV:ownerSiteURL>
 <DV:ownerContact>mailto:redaktion@deutschestextarchiv.de</DV:ownerContact>
 </DV:rights>
-</METS:xmlData>
-</METS:mdWrap>
-</METS:rightsMD>
-<METS:digiprovMD ID="digiprovMD_0001">
-<METS:mdWrap MIMETYPE="text/xml" MDTYPE="OTHER" OTHERMDTYPE="DVLINKS">
-<METS:xmlData>
+</mets:xmlData>
+</mets:mdWrap>
+</mets:rightsMD>
+<mets:digiprovMD ID="digiprovMD_0001">
+<mets:mdWrap MIMETYPE="text/xml" MDTYPE="OTHER" OTHERMDTYPE="DVLINKS">
+<mets:xmlData>
 <DV:links>
 <DV:reference/>
 <DV:presentation>
@@ -577,10 +577,10 @@ select="//TEI:fileDesc/TEI:titleStmt/TEI:respStmt[@corresp='#availability-textso
 </xsl:choose>
 </DV:presentation>
 </DV:links>
-</METS:xmlData>
-</METS:mdWrap>
-</METS:digiprovMD>
-</METS:amdSec>
+</mets:xmlData>
+</mets:mdWrap>
+</mets:digiprovMD>
+</mets:amdSec>
 </xsl:template>
 <xsl:template name="createId">
 <xsl:param name="prefix"/>
