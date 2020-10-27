@@ -52,15 +52,26 @@
       <xsl:otherwise>DTADirName_nicht_vorhanden</xsl:otherwise>
     </xsl:choose>
   </xsl:param>
+
+  <xsl:param name="location_alto_Prefix">
+    <xsl:choose>
+      <xsl:when test="//TEI:fileDesc/TEI:publicationStmt/TEI:idno/TEI:idno[@type = 'URLALTO']">
+        <xsl:value-of
+          select="//TEI:fileDesc/TEI:publicationStmt/TEI:idno/TEI:idno[@type = 'URLALTO']"/>
+      </xsl:when>
+      <xsl:otherwise>URLALTO_nicht_vorhanden</xsl:otherwise>
+    </xsl:choose>
+  </xsl:param>
+
+  <xsl:param name="useOrWidth">width</xsl:param>
   <xsl:param name="locationPrefix">http://media.dwds.de/dta/images/</xsl:param>
-  <xsl:param name="location_alto_Prefix"/>
   <xsl:param name="localPrefix">string('REPLACEME-LOCAL_PREFIX')</xsl:param>
   <xsl:param name="locationSuffix">.jpg</xsl:param>
   <xsl:param name="multipleHead" select="true()" as="xs:boolean"/>
   <xsl:variable name="physPrefix">phys</xsl:variable>
   <xsl:variable name="locPrefix">loc</xsl:variable>
   <xsl:variable name="filePrefix">file</xsl:variable>
-  <xsl:variable name="useOrWidth">width</xsl:variable>
+
   <xsl:variable name="fileGroups">
     <group width="800" locationPrefix="" locationSuffix="">DEFAULT</group>
     <group width="400" locationPrefix="" locationSuffix="">MIN</group>
@@ -294,7 +305,9 @@
             <xsl:text>_</xsl:text>
             <xsl:number format="0001" level="any" count="//TEI:pb"/>
           </xsl:attribute>
-          <xsl:attribute name="SEQ"><xsl:number format="1" level="any" count="//TEI:pb"/></xsl:attribute>
+          <xsl:attribute name="SEQ">
+            <xsl:number format="1" level="any" count="//TEI:pb"/>
+          </xsl:attribute>
           <mets:FLocat LOCTYPE="URL">
             <xsl:attribute name="xlink:href">
               <xsl:choose>
@@ -308,16 +321,15 @@
               <xsl:if test="$id = ''">
                 <xsl:message terminate="yes">No identifier given!</xsl:message>
               </xsl:if>
-              <xsl:value-of select="$id"/>
+              <!--<xsl:value-of select="$id"/>-->
 
               <xsl:choose>
                 <xsl:when test="$useOrWidth = 'use'">
-                  <xsl:text>/</xsl:text>
-                  <xsl:value-of select="$use"/>
-                  <xsl:text>/</xsl:text>
                   <xsl:value-of select="$identifier"/>
-                  <xsl:text>_</xsl:text>
-                  <xsl:number format="0001" level="any" count="//TEI:pb"/>
+                  <xsl:variable name="num">
+                    <xsl:number format="1" level="any" count="//TEI:pb"/>
+                  </xsl:variable>
+                  <xsl:value-of select="$num + 1"/>
                 </xsl:when>
 
                 <xsl:when test="$useOrWidth = 'width'">
@@ -327,7 +339,10 @@
                   <xsl:text>/</xsl:text>
                   <xsl:value-of select="$identifier"/>
                   <xsl:text>_</xsl:text>
-                  <xsl:number format="0001" level="any" count="//TEI:pb"/>
+                  <xsl:variable name="num">
+                    <xsl:number format="1" level="any" count="//TEI:pb"/>
+                  </xsl:variable>
+                  <xsl:value-of select="$num + 1"/>
                   <xsl:text>_</xsl:text>
                   <xsl:value-of select="$width"/>
                   <xsl:text>px</xsl:text>
@@ -374,7 +389,9 @@
             <xsl:text>_</xsl:text>
             <xsl:number format="0001" level="any" count="//TEI:pb"/>
           </xsl:attribute>
-          <xsl:attribute name="SEQ"><xsl:number format="1" level="any" count="//TEI:pb"/></xsl:attribute>
+          <xsl:attribute name="SEQ">
+            <xsl:number format="1" level="any" count="//TEI:pb"/>
+          </xsl:attribute>
           <mets:FLocat LOCTYPE="URL">
             <xsl:attribute name="xlink:href">
               <xsl:choose>
@@ -388,25 +405,18 @@
               <xsl:if test="$id = ''">
                 <xsl:message terminate="yes">No identifier given!</xsl:message>
               </xsl:if>
-              <xsl:value-of select="$id"/>
+              <!--<xsl:value-of select="$id"/>-->
+              <xsl:if test="$file = ''">
+                <xsl:message terminate="yes">No width given!</xsl:message>
+              </xsl:if>
 
-              <xsl:choose>
-                 <xsl:when test="$useOrWidth = 'width'">
-                  <xsl:if test="$file = ''">
-                    <xsl:message terminate="yes">No width given!</xsl:message>
-                  </xsl:if>
-                  <xsl:text>/</xsl:text>
-                  <xsl:value-of select="$identifier"/>
-                  <xsl:text>_</xsl:text>
-                  <xsl:number format="0001" level="any" count="//TEI:pb"/>
-                  <xsl:text>.</xsl:text>
-                  <xsl:value-of select="$file"/>
-                </xsl:when>
-                <xsl:otherwise>
-                  <xsl:message terminate="yes">Wrong URL type, valid is 'use' and 'width'
-                  </xsl:message>
-                </xsl:otherwise>
-              </xsl:choose>
+              <xsl:value-of select="$identifier"/>
+              <xsl:variable name="num">
+                <xsl:number format="1" level="any" count="//TEI:pb"/>
+              </xsl:variable>
+              <xsl:value-of select="$num + 1"/>
+              <xsl:text>.</xsl:text>
+              <xsl:value-of select="$file"/>
             </xsl:attribute>
           </mets:FLocat>
         </mets:file>
