@@ -258,6 +258,17 @@
             </xsl:attribute>
           </mets:fptr>
         </xsl:for-each>
+        <xsl:for-each select="$alto/group">
+          <mets:fptr>
+            <xsl:attribute name="FILEID">
+              <xsl:value-of select="$filePrefix"/>
+              <xsl:text>_</xsl:text>
+              <xsl:value-of select="."/>
+              <xsl:text>_</xsl:text>
+              <xsl:value-of select="$pageId"/>
+            </xsl:attribute>
+          </mets:fptr>
+        </xsl:for-each>
       </mets:div>
     </xsl:for-each>
   </xsl:template>
@@ -283,6 +294,7 @@
             <xsl:text>_</xsl:text>
             <xsl:number format="0001" level="any" count="//TEI:pb"/>
           </xsl:attribute>
+          <xsl:attribute name="SEQ"><xsl:number format="1" level="any" count="//TEI:pb"/></xsl:attribute>
           <mets:FLocat LOCTYPE="URL">
             <xsl:attribute name="xlink:href">
               <xsl:choose>
@@ -362,6 +374,7 @@
             <xsl:text>_</xsl:text>
             <xsl:number format="0001" level="any" count="//TEI:pb"/>
           </xsl:attribute>
+          <xsl:attribute name="SEQ"><xsl:number format="1" level="any" count="//TEI:pb"/></xsl:attribute>
           <mets:FLocat LOCTYPE="URL">
             <xsl:attribute name="xlink:href">
               <xsl:choose>
